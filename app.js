@@ -57,7 +57,8 @@ app.post('/login', async (req, res) => {
 // MongoDB Atlas connection
 main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect('mongodb+srv://amoghleader:rC1UdaPd7x7SmjAw@cluster0.e2zz8.mongodb.net/userDB');
+  const mongoURI = process.env.MONGODB_URI;
+  await mongoose.connect(mongoURI);
 }
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
